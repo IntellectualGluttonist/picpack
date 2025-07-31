@@ -1,4 +1,21 @@
+@font-face {
+  font-family: Pixelated-Elegance;
+  src: url("./assets/fonts/PixelatedEleganceRegular-ovyAA.ttf");
+}
+
 @import "tailwindcss";
+
+@layer base {
+  p {
+    @apply font-[Pixelated-Elegance];
+  }
+  h1 {
+    @apply font-[Pixelated-Elegance];
+  }
+  input {
+    @apply font-[Pixelated-Elegance];
+  }
+}
 
 @theme {
   --color-internal-grey: #363636;
