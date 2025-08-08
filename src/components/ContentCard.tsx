@@ -13,7 +13,11 @@ const ContentCard = () => {
           &bull;
           <p className="text-[11px] text-blue-700">Follow</p>
         </div>
-        <img src="./src/assets/images/testimg.png" className="size-[24px]" />
+        <img
+          id="content-options-button"
+          src="./src/assets/images/testimg.png"
+          className="size-[24px]"
+        />
       </div>
       <img
         src="./src/assets/images/testimg.png"
@@ -23,19 +27,26 @@ const ContentCard = () => {
         <div className="flex py-[4px] place-content-between">
           <div className="flex gap-[8px]">
             <img
-              src="./src/assets/images/testimg.png"
+              id="content-like-button"
+              src="./src/assets/images/shapeofmyheartblack.svg"
               className="size-[24px]"
             />
             <img
-              src="./src/assets/images/testimg.png"
+              id="comments-button"
+              src="./src/assets/images/comments-icon.svg"
               className="size-[24px]"
             />
             <img
-              src="./src/assets/images/testimg.png"
+              id="share-button"
+              src="./src/assets/images/share-icon.svg"
               className="size-[24px]"
             />
           </div>
-          <img src="./src/assets/images/testimg.png" className="size-[24px]" />
+          <img
+            id="save-button"
+            src="./src/assets/images/save-icon.svg"
+            className="size-[24px]"
+          />
         </div>
         <p className="font-semibold text-[12px]">10,000 likes</p>
         <p className="text-[12px]">

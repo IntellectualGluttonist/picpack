@@ -19,4 +19,6 @@
 
 @theme {
   --color-internal-grey: #363636;
+  --breakpoint-third: 1265px;
+  --breakpoint-second: 768px;
 }
