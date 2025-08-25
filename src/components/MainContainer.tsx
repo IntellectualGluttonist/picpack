@@ -1,17 +1,25 @@
-import CurrentActiveUsersContainer from "./CurrentActiveUsersContainer";
-import ContentContainer from "./ContentContainer";
-import RightSideBar from "./RightSideBar";
+import { type FunctionComponent } from "react";
+import Home from "./Home";
+import Test from "./Test";
 
-const MainContainer = () => {
+interface MainContainerProps {
+  currentPage: string;
+  setCurrentPage: Function;
+}
+
+const PageMap: {
+  [key: string]: FunctionComponent;
+} = {
+  home: Home,
+  test: Test,
+};
+
+const MainContainer = ({ currentPage }: MainContainerProps) => {
+  const SelectedComponent = PageMap[currentPage];
+
   return (
-    <div className="mt-[60px] mb-[60px] md:mt-0 md:mb-0 min-third:ml-[220px] min-second:ml-[72px] flex justify-center">
-      <div className="w-[630px] flex flex-col items-center">
-        <CurrentActiveUsersContainer />
-        <ContentContainer />
-      </div>
-      <div className="hidden min-third:block mt-[36px]">
-        <RightSideBar />
-      </div>
+    <div className="mt-[60px] mb-[60px] md:mt-0 md:mb-0 min-third:ml-[220px] min-second:ml-[72px]">
+      <SelectedComponent />
     </div>
   );
 };

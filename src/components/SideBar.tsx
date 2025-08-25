@@ -1,29 +1,29 @@
-import SideBarComponent from "./SideBarComponent";
+import BarButton from "./BarButton.tsx";
 
-const SideBar = () => {
+interface SideBarProps {
+  currentPage: string;
+  setCurrentPage: Function;
+}
+
+const SideBar = ({ currentPage, setCurrentPage }: SideBarProps) => {
   return (
     <div className="hidden md:flex fixed top-0 bottom-0 w-[72px] min-third:w-[220px] flex-col bg-black text-white pt-[8px] pb-[20px] px-[12px] justify-between">
       <div>
         <div className="mt-[12px] pb-[23px] h-[93px]">
-          <SideBarComponent imageSrc="testimg.png" compTitle="PicPack" />
+          <BarButton
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
         <div>
-          <SideBarComponent imageSrc="testimg.png" compTitle="Home" />
-          <SideBarComponent imageSrc="testimg.png" compTitle="Search" />
-          <SideBarComponent imageSrc="testimg.png" compTitle="Explore" />
-          <SideBarComponent imageSrc="testimg.png" compTitle="Pics" />
-          <SideBarComponent imageSrc="testimg.png" compTitle="Messages" />
-          <SideBarComponent
-            imageSrc="shapeofmyheart.svg"
-            compTitle="Notifications"
+          <BarButton
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
-          <SideBarComponent imageSrc="testimg.png" compTitle="Create" />
-          <SideBarComponent imageSrc="testimg.png" compTitle="Profile" />
         </div>
       </div>
       <div>
-        <SideBarComponent imageSrc="testimg.png" compTitle="More" />
-        <SideBarComponent imageSrc="testimg.png" compTitle="Also From Pixe" />
+        <BarButton currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
     </div>
   );
