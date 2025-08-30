@@ -1,4 +1,4 @@
-import TopBar from "./components/TopBar.tsx";
+import TopBar from "./components/TopBarComponents/TopBar.tsx";
 import MainContainer from "./components/MainContainer.tsx";
 import BottomBar from "./components/BottomBarComponents/BottomBar.tsx";
 import SideBar from "./components/SideBar.tsx";

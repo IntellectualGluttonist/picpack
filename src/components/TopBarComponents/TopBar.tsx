@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BarButton from "./BarButton";
+import BarButton from "../BarButton";
 
 interface TopBarProps {
   currentPage: string;
