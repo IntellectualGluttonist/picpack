@@ -1,10 +1,10 @@
-import RightSideBarUserComponent from "./RightSideBarUserComponent";
+import RightSideBarUserCard from "./RightSideBarUserCard";
 import RightSideBarLinks from "./RightSideBarLinks";
 
 const RightSideBar = () => {
   return (
     <div className="w-[383px] pl-[64px]">
-      <RightSideBarUserComponent
+      <RightSideBarUserCard
         username="User"
         details="User Details"
         action="Switch"
@@ -14,27 +14,27 @@ const RightSideBar = () => {
         <p>See All</p>
       </div>
       <div className="pb-[20px]">
-        <RightSideBarUserComponent
+        <RightSideBarUserCard
           username="User"
           details="User Details"
           action="Follow"
         />
-        <RightSideBarUserComponent
+        <RightSideBarUserCard
           username="User"
           details="User Details"
           action="Follow"
         />
-        <RightSideBarUserComponent
+        <RightSideBarUserCard
           username="User"
           details="User Details"
           action="Follow"
         />
-        <RightSideBarUserComponent
+        <RightSideBarUserCard
           username="User"
           details="User Details"
           action="Follow"
         />
-        <RightSideBarUserComponent
+        <RightSideBarUserCard
           username="User"
           details="User Details"
           action="Follow"

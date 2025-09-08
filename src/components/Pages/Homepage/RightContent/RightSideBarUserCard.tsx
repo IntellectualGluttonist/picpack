@@ -1,14 +1,14 @@
-interface RightSideBarUserComponentProps {
+interface RightSideBarUserProps {
   username: string;
   details: string;
   action: string;
 }
 
-const RightSideBarUserComponent = ({
+const RightSideBarUserCard = ({
   username,
   details,
   action,
-}: RightSideBarUserComponentProps) => {
+}: RightSideBarUserProps) => {
   return (
     <div className="flex items-center place-content-between py-[8px]">
       <div className="flex items-center">
@@ -23,4 +23,4 @@ const RightSideBarUserComponent = ({
   );
 };
 
-export default RightSideBarUserComponent;
+export default RightSideBarUserCard;
