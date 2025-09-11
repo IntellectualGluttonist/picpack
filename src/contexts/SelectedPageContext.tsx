@@ -14,7 +14,7 @@ const SelectedPageContext = createContext({} as SelectedPageContextType);
 export const useSelectedPageContext = () => useContext(SelectedPageContext);
 
 export const SelectedPageProvider = ({ children }: SelectPageProviderProps) => {
-  const [selectedPage, setSelectedPage] = useState("test");
+  const [selectedPage, setSelectedPage] = useState("home");
 
   const contextValue: SelectedPageContextType = {
     selectedPage,

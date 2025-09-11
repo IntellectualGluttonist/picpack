@@ -1,4 +1,4 @@
-import { useSelectedPageContext } from "../../contexts/SelectedPageContext.tsx";
+import { useSelectedPageContext } from "../contexts/SelectedPageContext.tsx";
 import { Link } from "react-router-dom";
 
 const NavButton = () => {
@@ -22,7 +22,6 @@ const NavButton = () => {
                 : "./src/assets/images/homeicon.svg"
             }
           />
-          <p className="hidden min-third:flex text-[12px]">Test</p>
         </div>
       </button>
     </Link>
