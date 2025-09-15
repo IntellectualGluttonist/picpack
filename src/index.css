@@ -6,13 +6,7 @@
 @import "tailwindcss";
 
 @layer base {
-  p {
-    @apply font-[Pixelated-Elegance];
-  }
-  h1 {
-    @apply font-[Pixelated-Elegance];
-  }
-  input {
+  * {
     @apply font-[Pixelated-Elegance];
   }
 }
