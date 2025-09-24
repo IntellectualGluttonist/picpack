@@ -1,5 +1,5 @@
 import PostCard from "../components/PostCard";
-import BottomNav from "../navigation/BottomNav";
+import GeneralUI from "../components/GeneralUI";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -40,8 +40,8 @@ const Home = () => {
 
   return (
     <div className="flex justify-center">
-      <BottomNav />
-      <div className="postcards-container flex flex-col items-center w-[470px]">
+      <GeneralUI />
+      <div className="postcards-container flex flex-col items-center w-[470px] mt-[48px] mb-[48px] md:mt-0 lg:ml-[244px]">
         <h1 className="text-[20px]">Suggested Posts</h1>
         {contents.map((content) => (
           <PostCard content={content} key={crypto.randomUUID()} />

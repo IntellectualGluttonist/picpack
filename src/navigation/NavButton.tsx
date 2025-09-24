@@ -1,29 +1,47 @@
-import { useSelectedPageContext } from "../contexts/SelectedPageContext.tsx";
+import { useGeneralStateContext } from "../contexts/GeneralStateContext.tsx";
 import { Link } from "react-router-dom";
 
-const NavButton = () => {
-  const { selectedPage, setSelectedPage } = useSelectedPageContext();
+interface imgUrlsObject {
+  focus: string;
+  nofocus: string;
+}
+
+interface NavButtonProps {
+  linkUrl: string;
+  imgUrls: imgUrlsObject;
+  navButtonType: string;
+  buttonName: string;
+  isProfile: boolean;
+}
+
+const NavButton = ({
+  linkUrl,
+  imgUrls,
+  navButtonType,
+  buttonName,
+  isProfile,
+}: NavButtonProps) => {
+  const { selectedPage, setSelectedPage } = useGeneralStateContext();
 
   return (
-    <Link to="/">
-      <button
-        onClick={() => {
-          setSelectedPage("home");
-        }}
-        className="cursor-pointer w-[48px] h-[48px]"
-      >
-        <div>
-          <img
-            id="homeicon"
-            className="size-[24px]"
-            src={
-              selectedPage === "home"
-                ? "./src/assets/images/homeiconfocused.svg"
-                : "./src/assets/images/homeicon.svg"
-            }
-          />
-        </div>
-      </button>
+    <Link
+      to={linkUrl}
+      className="h-[48px] flex items-center cursor-pointer hover:bg-amber-300"
+      onClick={() => {
+        setSelectedPage(linkUrl);
+      }}
+    >
+      <img
+        className={`size-[24px] ${isProfile ? "rounded-[12px]" : ""} ${
+          selectedPage == linkUrl && isProfile ? "outline-2 outline-white" : ""
+        }`}
+        src={selectedPage === linkUrl ? imgUrls.focus : imgUrls.nofocus}
+      />
+      {navButtonType == "left" && (
+        <p className="hidden text-white align-middle lg:block pl-[10px]">
+          {buttonName}
+        </p>
+      )}
     </Link>
   );
 };

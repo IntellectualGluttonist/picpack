@@ -22,11 +22,19 @@ const Login = () => {
         return { status: "error" };
       }
 
+      const userInfo = await response.json();
+
+      if (!userInfo) {
+        return { status: "error" };
+      }
+
       if (response.headers.get("x-auth-token")) {
         localStorage.setItem(
           "x-auth-token",
           response.headers.get("x-auth-token") as string
         );
+
+        localStorage.setItem("userData", JSON.stringify(userInfo));
 
         navigate("/");
       }

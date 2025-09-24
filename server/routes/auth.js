@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const _ = require("lodash");
 const { userModel, validate } = require("../models/user");
 const bcrypt = require("bcryptjs");
 const asyncMiddleware = require("../middleware/async");
@@ -26,7 +27,7 @@ router.post(
     }
 
     const token = user.generateAuthToken();
-    res.header("x-auth-token", token).send("Logged In");
+    res.header("x-auth-token", token).send(_.pick(user, ["_id", "username"]));
   })
 );
 
