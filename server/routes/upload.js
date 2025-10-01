@@ -17,7 +17,7 @@ const { postModel } = require("../models/post");
 router.post(
   "/",
   auth,
-  upload.single("upload-image"),
+  upload.single("upload_image"),
   asyncMiddleware(async (req, res) => {
     let post = new postModel({
       img_path: req.file.originalname,
