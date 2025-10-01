@@ -1,10 +1,11 @@
 import GeneralUI from "../components/GeneralUI";
-import { useActionState } from "react";
+import { useActionState, useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
   const [data, action, isPending] = useActionState(sendImageRequest, undefined);
   const navigate = useNavigate();
+  const [imgPreview, setImgPreview] = useState<null | string>(null);
 
   async function sendImageRequest(previousState: unknown, formData: FormData) {
     const file = formData.get("upload_image") as File;
@@ -40,19 +41,56 @@ const CreatePost = () => {
         className="lg:ml-[244px] flex flex-col items-center justify-center h-[100vh]"
       >
         <div className="postplaceholder flex flex-col items-center relative rounded-[12px] border-3">
-          <img className="aspect-[2/3] w-[300px] rounded-[12px]" />
-          <label
-            htmlFor="upload_image"
-            className="absolute top-[50%] border-3 border-black pb-[5px] pt-[7px] px-[15px] text-center rounded-full bg-black text-white hover:bg-white hover:text-black cursor-pointer"
-          >
-            Upload Image
-          </label>
+          <img
+            id="imgPreview"
+            src={imgPreview ? imgPreview : "#"}
+            className={`aspect-[2/3] w-[300px] rounded-[12px] ${
+              imgPreview ? "visible" : "invisible"
+            }`}
+          />
+          {!imgPreview && (
+            <label
+              htmlFor="upload_image"
+              className="absolute top-[50%] border-3 border-black pb-[5px] pt-[7px] px-[15px] text-center rounded-full bg-black text-white hover:bg-white hover:text-black cursor-pointer"
+            >
+              Upload Image
+            </label>
+          )}
+          {imgPreview && (
+            <div
+              className="absolute right-3 top-3 bg-black text-white hover:bg-white hover:text-black rounded-full border-black border-2 cursor-pointer"
+              onClick={() => {
+                setImgPreview(null);
+              }}
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+          )}
           <input
             type="file"
             id="upload_image"
             name="upload_image"
             accept="image/*"
             className="hidden"
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
+              if (event.target.files && event.target.files.length > 0) {
+                const file = event.target.files[0];
+                const preview = URL.createObjectURL(file);
+                setImgPreview(preview);
+              }
+            }}
           />
         </div>
         <button
