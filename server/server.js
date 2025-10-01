@@ -8,9 +8,12 @@ const corsOptions = {
 };
 const app = express();
 
+app.use(express.static("uploads"));
+
 const auth = require("./routes/auth");
 const users = require("./routes/users");
 const home = require("./routes/home");
+const upload = require("./routes/upload");
 
 const error = require("./middleware/error");
 
@@ -33,6 +36,7 @@ app.use(express.json());
 app.use("/", home);
 app.use("/auth", auth);
 app.use("/users", users);
+app.use("/upload", upload);
 app.use(error);
 
 const port = process.env.PORT || 8080;

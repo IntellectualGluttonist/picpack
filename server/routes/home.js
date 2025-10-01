@@ -11,20 +11,20 @@ router.get(
       results: [
         {
           profile_username: "testing2",
-          profile_picture_path: "/vite.svg",
-          content_picture_path: "/vite.svg",
+          profile_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
+          content_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
           content_description: "example2",
         },
         {
           profile_username: "testing2",
-          profile_picture_path: "/vite.svg",
-          content_picture_path: "/vite.svg",
+          profile_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
+          content_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
           content_description: "example2",
         },
         {
           profile_username: "testing2",
-          profile_picture_path: "/vite.svg",
-          content_picture_path: "/vite.svg",
+          profile_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
+          content_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
           content_description: "example2",
         },
       ],

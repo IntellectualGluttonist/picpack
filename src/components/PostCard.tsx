@@ -16,7 +16,7 @@ const ContentCard = ({ content }: ContentCardProps) => {
         <div className="flex items-center">
           <img
             src={content.profile_picture_path}
-            className="profile rounded-full"
+            className="profile rounded-full size-[40px]"
           />
           <p className="text-[10px]">{content.profile_username}</p>
         </div>
@@ -31,7 +31,6 @@ const ContentCard = ({ content }: ContentCardProps) => {
         <p className="text-[12px]">
           <span className="font-semibold">{content.profile_username}</span>
           {content.content_description}
-          <span className="opacity-50">more</span>
         </p>
       </div>
       <hr className="pb-[10px]" />
