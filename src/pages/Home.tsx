@@ -7,7 +7,7 @@ interface Content {
   profile_username: string;
   profile_picture_path: string;
   content_picture_path: string;
-  content_description: string;
+  content_caption: string;
 }
 
 const Home = () => {

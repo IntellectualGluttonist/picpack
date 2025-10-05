@@ -31,9 +31,6 @@ const Profile = () => {
           <p className="pt-[15px]">Profile Name</p>
         </div>
         <div className="md:pl-[15px] md:pr-[15px]">
-          <div className="profile-menu flex justify-center">
-            <img className="size-[48px]" />
-          </div>
           <hr />
           <div className="posts justify-center grid grid-cols-[repeat(3,minmax(100px,400px))] gap-0.5">
             {profilePosts.map((content) => (

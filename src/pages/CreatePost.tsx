@@ -1,6 +1,6 @@
-import GeneralUI from "../components/GeneralUI";
 import { useActionState, useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import GeneralUI from "../components/GeneralUI";
 
 const CreatePost = () => {
   const [data, action, isPending] = useActionState(sendImageRequest, undefined);
@@ -30,6 +30,7 @@ const CreatePost = () => {
     } catch (err) {
       return console.log(err);
     }
+    setImgPreview(null);
   }
 
   return (
@@ -40,25 +41,19 @@ const CreatePost = () => {
         action={action}
         className="lg:ml-[244px] flex flex-col items-center justify-center h-[100vh]"
       >
-        <div className="postplaceholder flex flex-col items-center relative rounded-[12px] border-3">
-          <img
-            id="imgPreview"
-            src={imgPreview ? imgPreview : "#"}
-            className={`aspect-[2/3] w-[300px] rounded-[12px] ${
-              imgPreview ? "visible" : "invisible"
-            }`}
-          />
+        <div className="postplaceholder flex flex-col items-center justify-center relative rounded-[12px] w-[300px] aspect-[2/3] border-3 bg-black">
+          {imgPreview ? <img id="imgPreview" src={imgPreview} /> : ""}
           {!imgPreview && (
             <label
               htmlFor="upload_image"
-              className="absolute top-[50%] border-3 border-black pb-[5px] pt-[7px] px-[15px] text-center rounded-full bg-black text-white hover:bg-white hover:text-black cursor-pointer"
+              className="absolute top-[50%] border-3 border-white pb-[5px] pt-[7px] px-[15px] text-center rounded-full bg-black text-white hover:bg-white hover:text-black cursor-pointer"
             >
               Upload Image
             </label>
           )}
           {imgPreview && (
             <div
-              className="absolute right-3 top-3 bg-black text-white hover:bg-white hover:text-black rounded-full border-black border-2 cursor-pointer"
+              className="absolute right-3 top-3 bg-black text-white hover:bg-white hover:text-black rounded-full border-white border-2 cursor-pointer"
               onClick={() => {
                 setImgPreview(null);
               }}
@@ -70,9 +65,9 @@ const CreatePost = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
@@ -95,7 +90,7 @@ const CreatePost = () => {
         </div>
         <button
           type="submit"
-          disabled={isPending}
+          disabled={isPending || imgPreview == null}
           className="mt-[15px] border-3 pb-[5px] pt-[7px] px-[15px] text-center rounded-full border-black bg-black text-white hover:bg-white hover:text-black cursor-pointer"
         >
           Create Post

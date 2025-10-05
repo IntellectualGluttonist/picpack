@@ -5,23 +5,20 @@ import Register from "./pages/Register.tsx";
 import Login from "./pages/Login.tsx";
 import CreatePost from "./pages/CreatePost.tsx";
 import { Routes, Route } from "react-router-dom";
-import { GeneralStateProvider } from "./contexts/GeneralStateContext.tsx";
 
 function App() {
   return (
     <>
-      <GeneralStateProvider>
-        <main>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/create" element={<CreatePost />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-      </GeneralStateProvider>
+      <main>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/create" element={<CreatePost />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </main>
     </>
   );
 }
