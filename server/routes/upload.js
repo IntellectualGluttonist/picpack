@@ -8,24 +8,39 @@ const storage = multer.diskStorage({
     cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + ".jpg");
   },
 });
-const upload = multer({ storage });
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/jpeg") {
+    cb(null, true);
+  } else {
+    cb(new Error("Invalid file type, only JPEG images are allowed!"));
+  }
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 const { postModel } = require("../models/post");
 
 router.post(
   "/",
   auth,
-  upload.single("upload_image"),
   asyncMiddleware(async (req, res) => {
-    let post = new postModel({
-      img_path: req.file.originalname,
-      user: req.user._id,
-    });
-    await post.save();
+    upload.single("upload_image")(req, res, async function (err) {
+      if (err instanceof multer.MulterError) {
+        return res.status(400).send(err.message);
+      } else if (err) {
+        return res.status(500).send("An unexpected error occured");
+      }
 
-    return res.json(req.file);
+      let post = new postModel({
+        img_path: req.file.filename,
+        user: req.user._id,
+      });
+      await post.save();
+
+      return res.status(200).json(req.file);
+    });
   })
 );
 

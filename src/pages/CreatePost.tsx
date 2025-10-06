@@ -77,7 +77,7 @@ const CreatePost = () => {
             type="file"
             id="upload_image"
             name="upload_image"
-            accept="image/*"
+            accept="image/png, image/jpeg"
             className="hidden"
             onChange={(event: ChangeEvent<HTMLInputElement>) => {
               if (event.target.files && event.target.files.length > 0) {
