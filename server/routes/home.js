@@ -2,33 +2,20 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const asyncMiddleware = require("../middleware/async");
+const { postModel } = require("../models/post");
+const { userModel } = require("../models/user");
 
 router.get(
   "/",
-  auth,
-  asyncMiddleware((req, res) => {
-    res.json({
-      results: [
-        {
-          profile_username: "testing2",
-          profile_picture_path: "http://localhost:8080/IMG20220208130248.jpg",
-          content_picture_path: "http://localhost:8080/IMG20220208130248.jpg",
-          content_caption: "example2",
-        },
-        {
-          profile_username: "testing2",
-          profile_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
-          content_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
-          content_caption: "example2",
-        },
-        {
-          profile_username: "testing2",
-          profile_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
-          content_picture_path: "http://localhost:8080/IMG20221009095541.jpg",
-          content_caption: "example2",
-        },
-      ],
+  asyncMiddleware(async (req, res) => {
+    const posts = await postModel.aggregate([{ $sample: { size: 5 } }]);
+    const users = await userModel.populate(posts, {
+      path: "user",
+      model: userModel,
+      select: "username profile_picture_path",
     });
+
+    res.json(posts);
   })
 );
 

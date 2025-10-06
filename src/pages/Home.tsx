@@ -3,11 +3,15 @@ import GeneralUI from "../components/GeneralUI";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface Content {
-  profile_username: string;
+interface User {
   profile_picture_path: string;
-  content_picture_path: string;
-  content_caption: string;
+  username: string;
+}
+
+interface Content {
+  user: User;
+  img_path: string;
+  caption: string;
 }
 
 const Home = () => {
@@ -26,7 +30,7 @@ const Home = () => {
 
         if (response.ok) {
           const result = await response.json();
-          setContents(result.results);
+          setContents(result);
         } else if (response.status === 401) {
           navigate("/login");
         }

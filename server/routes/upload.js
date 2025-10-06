@@ -34,7 +34,7 @@ router.post(
       }
 
       let post = new postModel({
-        img_path: req.file.filename,
+        img_path: "http://localhost:8080/" + req.file.path,
         user: req.user._id,
       });
       await post.save();

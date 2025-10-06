@@ -42,7 +42,11 @@ const CreatePost = () => {
         className="lg:ml-[244px] flex flex-col items-center justify-center h-[100vh]"
       >
         <div className="postplaceholder flex flex-col items-center justify-center relative rounded-[12px] w-[300px] aspect-[2/3] border-3 bg-black">
-          {imgPreview ? <img id="imgPreview" src={imgPreview} /> : ""}
+          {imgPreview ? (
+            <img id="imgPreview" className="rounded-[12px]" src={imgPreview} />
+          ) : (
+            ""
+          )}
           {!imgPreview && (
             <label
               htmlFor="upload_image"
